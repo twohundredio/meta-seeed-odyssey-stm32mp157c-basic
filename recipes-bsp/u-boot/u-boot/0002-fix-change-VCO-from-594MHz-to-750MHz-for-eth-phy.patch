@@ -1,0 +1,39 @@
+Upstream-Status: Inappropriate [oe specific]
+
+diff --git a/arch/arm/dts/stm32mp157c-odyssey-som-u-boot.dtsi b/arch/arm/dts/stm32mp157c-odyssey-som-u-boot.dtsi
+index d07fdcf4bc3..a80c865123c 100644
+--- a/arch/arm/dts/stm32mp157c-odyssey-som-u-boot.dtsi
++++ b/arch/arm/dts/stm32mp157c-odyssey-som-u-boot.dtsi
+@@ -63,7 +63,7 @@
+ 		CLK_CKPER_HSE
+ 		CLK_FMC_ACLK
+ 		CLK_QSPI_ACLK
+-		CLK_ETH_DISABLED
++		CLK_ETH_PLL4P
+ 		CLK_SDMMC12_PLL4P
+ 		CLK_DSI_DSIPLL
+ 		CLK_STGEN_HSE
+diff --git a/arch/arm/dts/stm32mp157c-odyssey.dts b/arch/arm/dts/stm32mp157c-odyssey.dts
+index 4cc5e076838..0a415e24b2c 100644
+--- a/arch/arm/dts/stm32mp157c-odyssey.dts
++++ b/arch/arm/dts/stm32mp157c-odyssey.dts
+@@ -76,14 +76,18 @@
+ 	max-speed = <1000>;
+ 	phy-handle = <&phy0>;
+ 	phy-reset-gpios = <&gpiog 0 GPIO_ACTIVE_LOW>;
+-	st,ext-phyclk;
++	st,eth-clk-sel;
+ 
+ 	mdio0 {
++		status = "okay";
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+ 		compatible = "snps,dwmac-mdio";
+ 		phy0: ethernet-phy@7 {
+ 			reg = <7>;
++			reset-gpios = <&gpiog 0 GPIO_ACTIVE_LOW>;
++			reset-assert-us = <11000>;
++			reset-deassert-us = <1000>;
+ 		};
+ 	};
+ };

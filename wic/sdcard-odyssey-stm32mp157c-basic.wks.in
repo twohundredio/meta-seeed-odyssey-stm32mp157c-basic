@@ -1,0 +1,22 @@
+# short-description: Create SD card image with a boot partition (1GB)
+# long-description: Creates a partitioned SD card image (1GB)
+#
+#  - -------- ------------- -----
+# | | SPL(2) | U-Boot | rootfs  |
+#  - -------- ------------- -----
+#
+# Warning: the first stage of boot (here fsbl1, fsbl2, metadata1, metadata2, ssbl, fipa, fipb) MUST be on GPT partition to be detected.
+#
+
+# FSBL partitions aka U-Boot SPL
+part fsbl1 --source rawcopy --fstype=ext4 --fsoptions "noauto" --part-name=fsbl1 --sourceparams="file=${DEPLOY_DIR_IMAGE}/u-boot-spl.stm32" --ondisk mmcblk --part-type 0x8301 --fixed-size 256K --align 17
+part fsbl2 --source rawcopy --fstype=ext4 --fsoptions "noauto" --part-name=fsbl2 --sourceparams="file=${DEPLOY_DIR_IMAGE}/u-boot-spl.stm32" --ondisk mmcblk --part-type 0x8301 --fixed-size 256K
+
+# Ssbl partition
+part ssbl --source rawcopy --fstype=ext4 --fsoptions "noauto" --part-name=ssbl --sourceparams="file=${DEPLOY_DIR_IMAGE}/u-boot.img" --ondisk mmcblk --part-type 0x8301 --fixed-size 2048K
+# Bootfs
+#part bootfs --source rawcopy --sourceparams="file=st-image-bootfs-${DISTRO}-${MACHINE}.bootfs.ext4" --ondisk mmcblk --fstype=ext4 --label bootfs --active --fixed-size 64M
+# Rootfs
+part / --source rootfs --ondisk mmcblk --fstype=ext4 --label rootfs --fixed-size 783M --uuid e91c4e10-16e6-4c0e-bd0e-77becf4a3582
+
+bootloader --ptable gpt
