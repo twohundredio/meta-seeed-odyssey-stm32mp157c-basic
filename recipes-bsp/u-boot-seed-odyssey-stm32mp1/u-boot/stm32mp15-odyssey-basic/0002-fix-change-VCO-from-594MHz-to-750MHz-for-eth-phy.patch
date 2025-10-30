@@ -1,4 +1,4 @@
-Upstream-Status: Inappropriate [oe specific]
+Upstream-Status: Inappropriate [board specific]
 
 diff --git a/arch/arm/dts/stm32mp157c-odyssey-som-u-boot.dtsi b/arch/arm/dts/stm32mp157c-odyssey-som-u-boot.dtsi
 index d07fdcf4bc3..a80c865123c 100644

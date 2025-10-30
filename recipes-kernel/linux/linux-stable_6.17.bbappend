@@ -1,4 +1,5 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+
 SRC_URI += "file://config-no-xip.cfg \
             file://config-wifi.cfg \
             file://config-board.cfg \
