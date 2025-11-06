@@ -14,9 +14,8 @@ part fsbl2 --source rawcopy --fstype=ext4 --fsoptions "noauto" --part-name=fsbl2
 
 # Ssbl partition
 part ssbl --source rawcopy --fstype=ext4 --fsoptions "noauto" --part-name=ssbl --sourceparams="file=${DEPLOY_DIR_IMAGE}/u-boot.img" --ondisk mmcblk --part-type 0x8301 --fixed-size 2048K
-# Bootfs
-#part bootfs --source rawcopy --sourceparams="file=st-image-bootfs-${DISTRO}-${MACHINE}.bootfs.ext4" --ondisk mmcblk --fstype=ext4 --label bootfs --active --fixed-size 64M
+
 # Rootfs
-part / --source rootfs --ondisk mmcblk --fstype=ext4 --label rootfs --fixed-size 783M --uuid e91c4e10-16e6-4c0e-bd0e-77becf4a3582
+part / --source rootfs --ondisk mmcblk --fstype=ext4 --label rootfs --fixed-size 896M --active --uuid e91c4e10-16e6-4c0e-bd0e-77becf4a3582
 
 bootloader --ptable gpt
