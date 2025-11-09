@@ -19,7 +19,7 @@ repos:
 
   meta-linux-mainline:
     url: https://github.com/betafive/meta-linux-mainline
-    commit: b6f8590d5cdb7df6a899df9c519e38ec009a3013
+    commit: 6dd33142d8c10cda482a15ebf04f079d535dcfad
     layers:
       .:
 
