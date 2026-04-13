@@ -11,8 +11,9 @@ repos:
 
   poky:
     url: "https://git.yoctoproject.org/git/poky"
-    # tag: scarthgap-5.0.15
-    commit: 72983ac391008ebceb45edc7a8f0f6d5f4fe715c
+    # tag: scarthgap-5.0.16
+    branch: scarthgap
+    commit: 1d54d1c4736a114e1cecbe85a0306e3814d5ce70
     layers:
       meta:
       meta-poky:
@@ -20,8 +21,8 @@ repos:
 
   meta-linux-mainline:
     url: https://github.com/betafive/meta-linux-mainline
-    # branch: scarthgap
-    commit: 97cef7477d13f773e8419e5fa92be1a0bae78467
+    branch: scarthgap
+    commit: b305c7bd0e874f080e6ce6859ec59c58270df497
     layers:
       .:
 
