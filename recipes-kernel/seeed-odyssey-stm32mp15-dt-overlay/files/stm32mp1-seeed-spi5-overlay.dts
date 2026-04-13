@@ -55,17 +55,6 @@
                         pinctrl-1 = <&spi5_sleep_pins_s>;
                         cs-gpios = <&gpiof 3 0>;
                         status = "okay";
-
-                        st33htpm0: st33htpm@0 {
-                            compatible = "infineon,slb9670";
-                            reg = <0>;
-                            #address-cells = <1>;
-                            #size-cells = <0>;
-                            status = "okay";
-
-                            /* for kernel driver */
-                            spi-max-frequency = <10000000>;
-                        };               
                 };
         };
 };
